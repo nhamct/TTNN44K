@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+.btn-main {
+  background-color: #1E90FF;
+  border: none;
+  box-shadow: 0px 0px 5px #1E90FF;
+  transition: all 0.3s ease 0s;
+}
+
+.btn-main:hover {
+  box-shadow: 0px 3px 10px #5597da;
+  transform: translateY(-1px);
+}
+
+.bg-main {
+  background-color: #21D4FD;
+  background-image: linear-gradient(-60deg, #B721FF 0%, #21D4FD 100%);
+}

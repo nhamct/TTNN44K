@@ -1,0 +1,15 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-shadow: 2px 5px 13px 3px rgb(0 0 0 / 30%);
+  z-index: 1000;
+
+  .logo {
+    color: #00308f;
+    font-weight: 700;
+    font-size: 30px;
+  }
+}
+
+

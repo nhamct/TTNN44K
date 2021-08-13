@@ -1,0 +1,43 @@
+.login-form {
+  min-width: 400px;
+  width: auto;
+  background-color: #fff;
+  padding: 50px 100px;
+}
+
+.login-form-button {
+  width: 100%;
+}
+
+.heading {
+  font-size: 28px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.sideFormer {
+  width: 300px;
+  height: 400px;
+  background-image: url(https://images.unsplash.com/photo-1486848538113-ce1a4923fbc5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80);
+  background-position: center;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+// .form-wrapper {
+//   background-color: #fff;
+//   justify-content: center;
+//   align-items: center;
+//   margin: 0 100px;
+//   border-radius: 4px;
+//   overflow: hidden;
+// }

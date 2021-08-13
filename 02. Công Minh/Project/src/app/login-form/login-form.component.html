@@ -1,0 +1,54 @@
+<div class="">
+  <div class="sidenav"></div>
+  <div class="form-wrapper">
+    <div class="d-flex">
+      <div class="sideFormer"></div>
+        <form
+          nz-form
+          [formGroup]="validateForm"
+          class="login-form"
+          (ngSubmit)="submitForm()"
+        >
+          <h1 class="heading text-primary">Đăng nhập</h1>
+
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your username!">
+              <nz-input-group nzPrefixIcon="user">
+                <input
+                  class="py-1"
+                  nzSize="large"
+                  type="text"
+                  nz-input
+                  formControlName="userName"
+                  placeholder="Tên đăng nhập"
+                />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your Password!">
+              <nz-input-group nzPrefixIcon="lock">
+                <input
+                  class="py-1"
+                  type="password"
+                  nz-input
+                  nzSize="large"
+                  formControlName="password"
+                  placeholder="Mật khẩu"
+                />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <button
+            nz-button
+            nzSize="large"
+            class="login-form-button login-form-margin"
+            [nzType]="'primary'"
+            nz-button
+          >
+            Đăng nhập
+          </button>
+        </form>
+    </div>
+  </div>
+</div>

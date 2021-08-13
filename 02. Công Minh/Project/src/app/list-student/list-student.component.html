@@ -1,0 +1,117 @@
+<app-header></app-header>
+
+<div class="container mt-4">
+  <div class="card p-5">
+    <div class="d-flex">
+      <select
+        class="mr-4 p-1 border-primary rounded"
+        [(ngModel)]="pageSize"
+        (ngModelChange)="changePageSize($event)"
+      >
+        <!-- (ngModelChanged)="changePageSize($event)" -->
+        <option value="10">10 pages</option>
+        <option value="20">20 pages</option>
+        <option value="30">30 pages</option>
+        <option value="40">40 pages</option>
+      </select>
+      <button
+        class="btn border-primary"
+        (click)="increaseOrDecreasePage(pageIndex - 1)"
+        [class.border-dark]="pageIndex <= 1"
+        [disabled]="pageIndex <= 1"
+      >
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <ng-container *ngFor="let item of pageNumbers; let i = index">
+        <button
+          class="btn border-primary mx-1"
+          [class.btn-primary]="pageIndex === i + 1"
+          (click)="getData(item)"
+        >
+          <!-- [ngClass]="{'btn-danger': +pageIndex === (i + 1)}" -->
+          <span>{{ item }}</span>
+        </button>
+      </ng-container>
+
+      <button
+        class="btn border-primary"
+        (click)="increaseOrDecreasePage(pageIndex + 1)"
+        [class.border-dark]="pageIndex >= pageNumbers.length"
+        [disabled]="pageIndex >= pageNumbers.length"
+      >
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      <button
+      (click)="addStudentReactive()"
+      class="btn btn-warning  ml-auto font-weight-bold"
+    >
+      <i class="fas fa-plus mr-2"></i>Reactive
+    </button>
+    </div>
+
+
+
+    <!-- <button (click)="addStudent()"class="btn btn-primary float-right font-weight-bold mr-4">
+      <i class="fas fa-plus mr-2"></i>Driven
+    </button> -->
+
+    <table class="table my-4 table-sm table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">STT</th>
+          <!-- <th scope="col">ID</th> -->
+          <th scope="col">Họ tên</th>
+          <th scope="col">Địa chỉ</th>
+          <th scope="col">Số điện thoại</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of studentShow; let i = index">
+          <ng-container *ngIf="!student.isEdit; else editTemplate">
+            <td>{{ (pageIndex - 1) * pageSize + i + 1 }}</td>
+            <!-- <td>{{student.id}}</td> -->
+            <td>{{ student.name }}</td>
+            <td>{{ student.address }}</td>
+            <td>{{ student.phone | fmPhone }}</td>
+            <td class="d-flex justify-content-center">
+              <button class="btn btn-primary mr-4" (click)="edit(student)">
+                Sửa
+              </button>
+              <button class="btn btn-danger" (click)="remove(student.id)">
+                Xóa
+              </button>
+            </td>
+          </ng-container>
+          <ng-template #editTemplate>
+            <td>{{ (pageIndex - 1) * pageSize + i + 1 }}</td>
+            <td>
+              <input
+                type="text"
+                class="form-control border-secondary"
+                [(ngModel)]="student.name"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                class="form-control border-secondary"
+                [(ngModel)]="student.address"
+              />
+            </td>
+            <td>{{ student.phone | fmPhone }}</td>
+            <td class="d-flex justify-content-center">
+              <button class="btn btn-success mr-4" (click)="save(student)">
+                Lưu
+              </button>
+              <button class="btn btn-secondary" (click)="cancel(student, i)">
+                Hủy
+              </button>
+            </td>
+          </ng-template>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,95 @@
+<form [formGroup]="newStudentForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Tên <span class="text-danger">*</span></label>
+    <input id="name" class="form-control" type="text" formControlName="name" />
+    <div
+      class="col alert alert-danger mt-2"
+      role="alert"
+      *ngIf="
+        newStudentForm.hasError('invalid', ['name']) &&
+        newStudentForm.get(['name'])!.touched
+      "
+    >
+      Vui lòng nhập tên!
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email">Email <span class="text-danger">*</span></label>
+    <input
+      id="email"
+      class="form-control"
+      type="text"
+      formControlName="email"
+    />
+    <div
+      class="col alert alert-danger mt-2"
+      role="alert"
+      *ngIf="
+        newStudentForm.hasError('invalid', ['email']) &&
+        newStudentForm.get(['email'])!.touched
+      "
+    >
+      Vui lòng nhập email!
+    </div>
+    <div
+      class="col alert alert-danger mt-2"
+      role="alert"
+      *ngIf="
+        newStudentForm.hasError('email', ['email']) &&
+        newStudentForm.get(['email'])!.touched
+      "
+    >
+      Đây không phải email!
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="address">Địa chỉ <span class="text-danger">*</span></label>
+    <input
+      id="address"
+      class="form-control"
+      type="text"
+      formControlName="address"
+    />
+    <div
+      class="col alert alert-danger mt-2"
+      role="alert"
+      *ngIf="
+        newStudentForm.hasError('invalid', ['address']) &&
+        newStudentForm.get(['address'])!.touched
+      "
+    >
+      Vui lòng nhập địa chỉ!
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Số điện thoại <span class="text-danger">*</span></label>
+    <input
+      id="phone"
+      class="form-control"
+      type="text"
+      formControlName="phone"
+      (input)="numbersOnlyValidator($event)"
+    />
+    <div
+      class="col alert alert-danger mt-2"
+      role="alert"
+      *ngIf="
+        (newStudentForm.hasError('phoneNumberInvalid', ['phone']) ||
+          newStudentForm.hasError('invalid', ['phone'])) &&
+        newStudentForm.get(['phone'])!.touched
+      "
+    >
+      Số điện thoại không hợp lệ!
+    </div>
+  </div>
+  <br />
+  <button
+    [disabled]="!newStudentForm.valid"
+    type="submit"
+    class="btn btn-primary btn-main"
+  >
+    Thêm
+  </button>
+</form>
